@@ -10,7 +10,7 @@ def fetch_cms_data(dataset_id="9n3s-kdb3"):
     base_url = f"https://data.cms.gov/data-api/v1/dataset/{dataset_id}/data"
     all_data = []
     offset = 0
-    size = 1000  # CMS typically allows up to 5000 per request
+    size = 1000  
     
     print("Fetching data from CMS API...")
     while True:
@@ -29,8 +29,6 @@ def fetch_cms_data(dataset_id="9n3s-kdb3"):
         offset += size
         print(f"Downloaded {len(all_data)} records...", end='\r')
         
-        # For a quick test, you can uncomment the next line:
-        # if offset >= 2000: break 
 
     print(f"\nSuccessfully downloaded {len(all_data)} records.")
     return pd.DataFrame(all_data)
