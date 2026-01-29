@@ -49,12 +49,29 @@ print(reg_model.summary())
 
 # --- 6. Visualizations (Deliverable C.6) ---
 # Boxplot for ANOVA
-plt.figure(figsize=(14, 8))
+# 1. Create a "friendly name" dictionary
+name_mapping = {
+    'READM-30-HIP-KNEE-HRRP': 'Hip Knee',
+    'READM-30-AMI-HRRP': 'Heart Attack (AMI)',
+    'READM-30-HF-HRRP': 'Heart Failure',
+    'READM-30-PN-HRRP': 'Pneumonia',
+    'READM-30-COPD-HRRP': 'COPD',
+    'READM-30-CABG-HRRP': 'Heart Bypass (CABG)'
+}
+
+# 2. Map the technical names to new labels
+clean_df['measure_name'] = clean_df['measure_name'].map(name_mapping)
+
+# 3. Update the plot code
+plt.figure(figsize=(12, 6))
 sns.boxplot(x='measure_name', y='excess_readmission_ratio', data=clean_df)
-plt.title('Excess Readmission Ratio by Measure Type')
-plt.xlabel('CMS Measure Name')
-plt.ylabel('Excess Readmission Ratio (ERR)')
-plt.xticks(rotation=45, ha = 'right')
+
+# Adjust visual settings for the new shorter names
+plt.xticks(rotation=0)
+plt.title('Excess Readmission Ratio by Condition (FY 2025)')
+plt.xlabel('Medical Condition')
+plt.ylabel('Excess Readmission Ratio')
+
 plt.tight_layout()
 plt.savefig('anova_boxplot.png')
 
