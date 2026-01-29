@@ -49,10 +49,12 @@ print(reg_model.summary())
 
 # --- 6. Visualizations (Deliverable C.6) ---
 # Boxplot for ANOVA
-plt.figure(figsize=(12, 6))
+plt.figure(figsize=(14, 8))
 sns.boxplot(x='measure_name', y='excess_readmission_ratio', data=clean_df)
 plt.title('Excess Readmission Ratio by Measure Type')
-plt.xticks(rotation=45)
+plt.xlabel('CMS Measure Name')
+plt.ylabel('Excess Readmission Ratio (ERR)')
+plt.xticks(rotation=45, ha = 'right')
 plt.tight_layout()
 plt.savefig('anova_boxplot.png')
 
