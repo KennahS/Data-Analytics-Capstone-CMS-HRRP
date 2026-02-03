@@ -7,7 +7,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 
 # --- STEP 1: LOAD THE DATA ---
-# This uses the local CSV file you've already downloaded
+# This uses the local CSV file already downloaded
 csv_file = 'FY_2025_Hospital_Readmissions_Reduction_Program_Hospital.csv'
 
 try:
