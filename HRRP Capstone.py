@@ -7,7 +7,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 
 # --- STEP 1: LOAD THE DATA ---
-# This uses the local CSV file you've already downloaded
+# This uses the local CSV file already downloaded
 csv_file = 'FY_2025_Hospital_Readmissions_Reduction_Program_Hospital.csv'
 
 try:
@@ -16,14 +16,14 @@ try:
     print("Successfully loaded CSV.")
 except FileNotFoundError:
     print("Error: The CSV file was not found in the directory!")
-    # Optional: Keep your API code here as a backup if you wish
+    
 
 # --- STEP 2: CLEAN COLUMN NAMES ---
 # This fixes the 'KeyError' by making all names lowercase and replacing spaces with underscores
 df_raw.columns = [c.lower().replace(' ', '_') for c in df_raw.columns]
 
 # --- STEP 3: CONVERT DATA TYPES ---
-# Now 'expected_readmission_rate' will work because we cleaned the names in Step 2
+# Now 'expected_readmission_rate' will work because I cleaned the names in Step 2
 df_raw['expected_readmission_rate'] = pd.to_numeric(df_raw['expected_readmission_rate'], errors='coerce')
 df_raw['excess_readmission_ratio'] = pd.to_numeric(df_raw['excess_readmission_ratio'], errors='coerce')
 df_raw['predicted_readmission_rate'] = pd.to_numeric(df_raw['predicted_readmission_rate'], errors='coerce')
